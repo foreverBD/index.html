@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Superfight: Mega One (Love Edition) 🏎️💙</title>
+    <style>
+        :root {
+            --primary-blue: #0ea5e9;
+            --neon-blue: #00f0ff;
+            --dark-bg: #0f172a;
+            --lily-white: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--dark-bg);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- ANIME SUPERFIGHT BACKGROUND ANIMATION --- */
+        .battle-arena {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Fighter 1: Blue Aura Swordsman */
+        .fighter-blue {
+            position: absolute;
+            bottom: 20%;
+            left: -100px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--neon-blue) 0%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px var(--primary-blue);
+            animation: dashRight 4s infinite linear;
+        }
+        .fighter-blue::after {
+            content: '⚔️⚡';
+            font-size: 3rem;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+
+        /* Fighter 2: Gold/Red Aura Saiyan */
+        .fighter-gold {
+            position: absolute;
+            bottom: 20%;
+            right: -100px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, #f59e0b 0%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #ef4444;
+            animation: dashLeft 4s infinite linear;
+        }
+        .fighter-gold::after {
+            content: '🔥👊';
+            font-size: 3rem;
+            position: absolute;
+            top: 20%;
+            right: 20%;
+        }
+
+        /* Energy Clash Center Explosion */
+        .clash-impact {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-25%, 25%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #fff 10%, var(--neon-blue) 40%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: clashExplode 4s infinite linear;
+        }
+
+        @keyframes dashRight {
+            0% { left: -10%; transform: scaleX(1); }
+            35% { left: 40%; transform: scaleX(1); }
+            40% { left: 42%; }
+            45% { left: 35%; }
+            50% { left: -10%; transform: scaleX(-1); }
+            100% { left: -10%; }
+        }
+
+        @keyframes dashLeft {
+            0% { right: -10%; transform: scaleX(1); }
+            35% { right: 40%; transform: scaleX(1); }
+            40% { right: 42%; }
+            45% { right: 35%; }
+            50% { right: -10%; transform: scaleX(-1); }
+            100% { right: -10%; }
+        }
+
+        @keyframes clashExplode {
+            0%, 33% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+            35% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); filter: blur(5px); }
+            45% { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+            100% { opacity: 0; }
+        }
+
+        /* --- UI / INTERACTIVE QUIZ CARD --- */
+        .game-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(15, 23, 42, 0.85);
+            border: 4px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 550px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .game-title {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            min-height: 70px;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: #fff;
+            padding: 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--primary-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .lily-icon {
+            color: #fff;
+            filter: drop-shadow(0 0 8px var(--neon-blue));
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Anime Superfight Background Engine -->
+    <div class="battle-arena">
+        <div class="fighter-blue"></div>
+        <div class="clash-impact"></div>
+        <div class="fighter-gold"></div>
+    </div>
+
+    <!-- Main Game UI -->
+    <div class="game-card">
+        <div class="game-title">⚡ MEGA ONE: LOVE QUEST ⚡</div>
+        <div class="subtitle">PLAYER 1 vs PLAYER 2</div>
+        
+        <!-- Question 1: Intro / F1 Theme -->
+        <div id="q1">
+            <p class="question-text">🏎️ Lights out and away we go! Are you ready to fast-track through a few questions to unlock a secret message?</p>
+            <div class="btn-grid">
+                <button onclick="showNext('q1', 'q2')">GO GO GO! 🟢</button>
+                <button onclick="showNext('q1', 'q2')">Box, Box! (Yes) 🛠️</button>
+            </div>
+        </div>
+
+        <!-- Question 2: Gardening -->
+        <div id="q2" class="hidden">
+            <p class="question-text">🌱 Gardening check: If you were planting a legendary blue garden, which flower absolutely takes the crown podium finish?</p>
+            <div class="btn-grid">
+                <button onclick="showNext('q2', 'q3')">Lilies (The Objective Best) 🪻</button>
+                <button onclick="showNext('q2', 'q3')">Still Lilies, but styled in Neon Blue 💙</button>
+            </div>
+        </div>
+
+        <!-- Question 3: F1 Racing Speed -->
+        <div id="q3" class="hidden">
+            <p class="question-text">🏎️ F1 Speed Trap: How fast do my energy levels skyrocket when you smile or text me?</p>
+            <div class="btn-grid">
+                <button onclick="showNext('q3', 'q4')">Faster than a Red Bull Pitstop ⏱️</button>
+                <button onclick="showNext('q3', 'q4')">Breaking the actual Sound Barrier 🚀</button>
+            </div>
+        </div>
+
+        <!-- Question 4: The Ultimate Mega Question -->
+        <div id="q4" class="hidden">
+            <p class="question-text">⚔️ The final boss fight is here. Do you know who holds the title of the absolute best, most amazing person in my entire universe?</p>
+            <div class="btn-grid">
+                <button onclick="showNext('q4', 'reward')">Hint: It's You. Click here to confirm! 👇</button>
+            </div>
+        </div>
+
+        <!-- Finale Screen -->
+        <div id="reward" class="hidden">
+            <p class="question-text" style="color: var(--neon-blue); font-weight: bold; font-size: 1.4rem;">
+                🏆 VICTORY! 🏆 <br><br>
+                No heavy marriage drama here, dude. Just wanted to blast through the screen and say:<br><br>
+                I LOVE YOU! 💙🏎️🪻
+            </p>
+            <div class="subtitle">You've won the Grand Prix of my heart.</div>
+        </div>
+    </div>
+
+    <script>
+        function showNext(currentId, nextId) {
+            document.getElementById(currentId).classList.add('hidden');
+            document.getElementById(nextId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
