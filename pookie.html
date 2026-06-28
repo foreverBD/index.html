@@ -3,541 +3,542 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A special message made just for you.">
-<title>For You 💙</title>
+<meta name="description" content="A Formula 1 inspired love surprise.">
+<title>Race To My Heart</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
 :root{
---p:#c084fc;
---pk:#f472b6;
---b:#38bdf8;
---bg:#06040f;
---glass:rgba(255,255,255,0.04);
---border:rgba(192,132,252,0.2);
---text:#e2d9f3;
---sub:rgba(226,217,243,0.45);
+  --asphalt:#151515;
+  --carbon:#20211f;
+  --paper:#f6f0e6;
+  --cream:#eadfcb;
+  --red:#d71920;
+  --green:#2c8d69;
+  --gold:#c29b55;
+  --ink:#24201c;
+  --muted:rgba(246,240,230,.7);
+  --line:rgba(246,240,230,.18);
 }
-html{scroll-behavior:smooth;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-font-family:'Outfit',sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh;
-overflow-x:hidden;
+  margin:0;
+  min-height:100vh;
+  color:var(--paper);
+  font-family:Manrope, sans-serif;
+  background:
+    linear-gradient(115deg, rgba(215,25,32,.2), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(194,155,85,.18), transparent 32%),
+    linear-gradient(135deg, #10100f 0%, #1a1a18 48%, #0f1110 100%);
+  overflow-x:hidden;
 }
-canvas#c{
-position:fixed;
-inset:0;
-z-index:0;
-pointer-events:none;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 42px, rgba(255,255,255,.035) 42px 44px),
+    linear-gradient(120deg, transparent 0 58%, rgba(255,255,255,.04) 58% 60%, transparent 60%);
+  mix-blend-mode:screen;
+  opacity:.7;
 }
-.orb{
-position:fixed;
-border-radius:50%;
-filter:blur(80px);
-pointer-events:none;
-z-index:0;
+button,input{font:inherit}
+.app{
+  position:relative;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:28px;
 }
-.orb1{
-width:500px;height:500px;
-background:radial-gradient(circle,rgba(192,132,252,0.18),transparent 70%);
-top:-100px;left:-100px;
-animation:drift1 12s ease-in-out infinite alternate;
+.track-art{
+  position:fixed;
+  inset:auto -18vw -22vw auto;
+  width:min(76vw,760px);
+  aspect-ratio:1;
+  border:34px solid rgba(246,240,230,.09);
+  border-left-color:rgba(215,25,32,.5);
+  border-bottom-color:rgba(44,141,105,.28);
+  border-radius:48% 52% 46% 54% / 43% 39% 61% 57%;
+  transform:rotate(-26deg);
+  pointer-events:none;
 }
-.orb2{
-width:400px;height:400px;
-background:radial-gradient(circle,rgba(244,114,182,0.14),transparent 70%);
-bottom:-80px;right:-80px;
-animation:drift2 10s ease-in-out infinite alternate;
-}
-.orb3{
-width:350px;height:350px;
-background:radial-gradient(circle,rgba(56,189,248,0.12),transparent 70%);
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-animation:drift1 14s ease-in-out infinite alternate-reverse;
-}
-@keyframes drift1{from{transform:translate(0,0);}to{transform:translate(60px,40px);}}
-@keyframes drift2{from{transform:translate(0,0);}to{transform:translate(-50px,-30px);}}
-.stars{
-position:fixed;
-inset:0;
-z-index:0;
-pointer-events:none;
-}
-.star{
-position:absolute;
-border-radius:50%;
-background:#fff;
-animation:twinkle linear infinite;
-}
-@keyframes twinkle{0%,100%{opacity:0.1;}50%{opacity:0.8;}}
-.page{
-position:relative;
-z-index:10;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:40px 16px 80px;
-}
-.badge{
-display:inline-flex;
-align-items:center;
-gap:8px;
-background:linear-gradient(135deg,rgba(192,132,252,0.15),rgba(244,114,182,0.1));
-border:1px solid rgba(192,132,252,0.3);
-border-radius:100px;
-padding:8px 20px;
-font-size:0.7rem;
-font-weight:700;
-letter-spacing:3px;
-text-transform:uppercase;
-color:var(--p);
-margin-bottom:28px;
-backdrop-filter:blur(10px);
+.screen{
+  width:min(100%,1080px);
+  min-height:calc(100vh - 56px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(330px,440px);
+  gap:34px;
+  align-items:stretch;
 }
 .hero{
-text-align:center;
-max-width:680px;
-width:100%;
-padding-bottom:40px;
+  position:relative;
+  min-height:620px;
+  padding:34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(150deg, rgba(255,255,255,.08), transparent 42%),
+    linear-gradient(180deg, rgba(20,20,20,.62), rgba(13,13,12,.94));
 }
-.hero-title{
-font-family:'Playfair Display',serif;
-font-style:italic;
-font-size:clamp(3rem,9vw,5.5rem);
-background:linear-gradient(135deg,#fff 0%,var(--p) 45%,var(--pk) 75%,var(--b) 100%);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-background-clip:text;
-background-size:200% auto;
-line-height:1.15;
-margin-bottom:16px;
-animation:shine 4s linear infinite;
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(45deg, rgba(246,240,230,.12) 0 12.5%, transparent 12.5% 25%, rgba(246,240,230,.12) 25% 37.5%, transparent 37.5% 50%) 0 100%/96px 96px repeat-x,
+    linear-gradient(90deg, transparent 0 46%, rgba(246,240,230,.14) 46% 48%, transparent 48% 52%, rgba(246,240,230,.14) 52% 54%, transparent 54%);
+  opacity:.42;
 }
-@keyframes shine{
-0%{background-position:0% center;}
-100%{background-position:200% center;}
+.hero > *{position:relative}
+.kicker{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font-size:.74rem;
+  font-weight:800;
+  color:var(--muted);
 }
-.hero-sub{
-font-size:clamp(0.9rem,2.5vw,1.1rem);
-color:var(--sub);
-font-weight:300;
-letter-spacing:1.5px;
+.lights{display:flex;gap:8px}
+.light{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 20px rgba(215,25,32,.8);
+  animation:pulse 1.2s ease-in-out infinite alternate;
 }
-.track{
-width:100%;
-max-width:580px;
-height:3px;
-background:rgba(255,255,255,0.07);
-border-radius:100px;
-margin-bottom:28px;
-overflow:hidden;
+.light:nth-child(2){animation-delay:.18s}
+.light:nth-child(3){animation-delay:.36s}
+@keyframes pulse{to{opacity:.35;transform:scale(.84)}}
+h1{
+  margin:0;
+  max-width:760px;
+  font-family:"Bebas Neue", sans-serif;
+  font-size:clamp(4.4rem,13vw,10.8rem);
+  line-height:.82;
+  letter-spacing:.01em;
+  text-transform:uppercase;
 }
-.fill{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--p),var(--pk));
-border-radius:100px;
-transition:width 0.7s cubic-bezier(.4,0,.2,1);
-box-shadow:0 0 12px var(--pk);
+.script{
+  display:block;
+  margin-top:18px;
+  font-family:"DM Serif Display", serif;
+  font-size:clamp(1.65rem,4vw,3.5rem);
+  font-style:italic;
+  font-weight:400;
+  line-height:1.05;
+  color:var(--cream);
+  text-transform:none;
 }
-.card{
-width:100%;
-max-width:580px;
-background:var(--glass);
-border:1px solid var(--border);
-border-radius:28px;
-padding:clamp(28px,6vw,52px);
-backdrop-filter:blur(30px);
--webkit-backdrop-filter:blur(30px);
-box-shadow:
-0 0 0 1px rgba(192,132,252,0.06),
-0 8px 32px rgba(0,0,0,0.4),
-0 0 80px rgba(192,132,252,0.08);
-position:relative;
-overflow:hidden;
+.dash{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
 }
-.card::before{
-content:'';
-position:absolute;
-top:0;left:15%;right:15%;
-height:1px;
-background:linear-gradient(90deg,transparent,rgba(192,132,252,0.5),rgba(244,114,182,0.5),transparent);
+.meter{
+  border-top:1px solid var(--line);
+  padding-top:14px;
 }
-.step{display:none;animation:rise 0.5s cubic-bezier(.4,0,.2,1);}
-.step.on{display:block;}
-@keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-.step-label{
-font-size:0.65rem;
-font-weight:700;
-letter-spacing:3px;
-text-transform:uppercase;
-color:var(--p);
-margin-bottom:20px;
-display:flex;
-align-items:center;
-gap:8px;
+.meter b{
+  display:block;
+  font-family:"Bebas Neue", sans-serif;
+  font-size:2.1rem;
+  color:var(--paper);
 }
-.step-label span{
-display:inline-block;
-width:24px;height:24px;
-border-radius:50%;
-background:linear-gradient(135deg,var(--p),var(--pk));
-font-size:0.6rem;
-display:flex;align-items:center;justify-content:center;
-font-weight:900;
-color:#fff;
+.meter span{
+  color:var(--muted);
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.14em;
 }
-.q{
-font-size:clamp(1.05rem,3vw,1.35rem);
-font-weight:500;
-line-height:1.7;
-color:#f1ecff;
-margin-bottom:32px;
+.panel{
+  align-self:center;
+  background:rgba(246,240,230,.96);
+  color:var(--ink);
+  padding:26px;
+  min-height:620px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 28px 80px rgba(0,0,0,.35);
 }
-.q em{
-font-style:normal;
-background:linear-gradient(90deg,var(--p),var(--pk));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-background-clip:text;
-font-weight:700;
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  border-bottom:1px solid rgba(36,32,28,.18);
+  padding-bottom:16px;
 }
-.choices{
-display:flex;
-flex-direction:column;
-gap:12px;
+.tag{
+  background:var(--red);
+  color:white;
+  padding:7px 10px;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
 }
-.ch{
-display:flex;
-align-items:center;
-gap:14px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(192,132,252,0.15);
-border-radius:16px;
-padding:16px 18px;
-font-family:'Outfit',sans-serif;
-font-size:0.97rem;
-font-weight:500;
-color:var(--text);
-cursor:pointer;
-text-align:left;
-transition:all 0.28s cubic-bezier(.4,0,.2,1);
-position:relative;
-overflow:hidden;
-width:100%;
+.sound{
+  border:1px solid rgba(36,32,28,.2);
+  background:transparent;
+  color:var(--ink);
+  width:42px;
+  height:42px;
+  cursor:pointer;
 }
-.ch::after{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(135deg,rgba(192,132,252,0.08),rgba(244,114,182,0.06));
-opacity:0;
-transition:opacity 0.28s;
+.sound.on{background:var(--ink);color:var(--paper)}
+.view{display:none;animation:slide .45s ease both}
+.view.active{display:block}
+@keyframes slide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{
+  color:var(--red);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.76rem;
+  font-weight:800;
+  margin:28px 0 12px;
 }
-.ch:hover::after{opacity:1;}
-.ch:hover{
-border-color:rgba(192,132,252,0.45);
-transform:translateX(5px);
-box-shadow:0 0 24px rgba(192,132,252,0.15);
-color:#fff;
+h2{
+  margin:0 0 14px;
+  font-family:"DM Serif Display", serif;
+  font-size:clamp(2.1rem,5vw,3.2rem);
+  line-height:1;
 }
-.ch:active{transform:scale(0.98);}
-.ch svg{
-flex-shrink:0;
-width:22px;height:22px;
-opacity:0.85;
+p{line-height:1.7;color:rgba(36,32,28,.72)}
+.lock-form{display:grid;gap:13px;margin-top:28px}
+label{font-size:.84rem;font-weight:800;color:rgba(36,32,28,.72)}
+input{
+  width:100%;
+  border:0;
+  border-bottom:3px solid var(--ink);
+  background:rgba(36,32,28,.06);
+  padding:16px 14px;
+  color:var(--ink);
+  outline:none;
+}
+input:focus{box-shadow:0 0 0 3px rgba(215,25,32,.16)}
+.primary,.choice{
+  border:0;
+  cursor:pointer;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.primary{
+  background:var(--ink);
+  color:var(--paper);
+  padding:15px 18px;
+}
+.primary:hover,.choice:hover{transform:translateY(-2px)}
+.error{
+  min-height:24px;
+  color:var(--red);
+  font-weight:800;
+  font-size:.9rem;
+}
+.progress{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(36,32,28,.58);
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+}
+.bar{
+  flex:1;
+  height:8px;
+  background:rgba(36,32,28,.12);
+  overflow:hidden;
+}
+.bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--red),var(--gold),var(--green));
+  transition:width .35s ease;
+}
+.choices{display:grid;gap:10px;margin-top:22px}
+.choice{
+  min-height:58px;
+  text-align:left;
+  padding:14px 16px;
+  background:rgba(36,32,28,.08);
+  color:var(--ink);
+  border-left:5px solid transparent;
+}
+.choice.selected{border-left-color:var(--red);background:rgba(215,25,32,.1)}
+.result-note{
+  margin-top:18px;
+  padding:14px;
+  background:rgba(44,141,105,.12);
+  color:#245a45;
+  font-weight:800;
 }
 .finale{
-display:none;
-width:100%;
-max-width:580px;
-text-align:center;
-animation:rise 0.7s cubic-bezier(.4,0,.2,1);
+  text-align:left;
 }
-.finale.on{display:block;}
-.finale .card{text-align:center;}
-.f-icon{
-width:72px;height:72px;
-margin:0 auto 24px;
-display:block;
-filter:drop-shadow(0 0 20px rgba(244,114,182,0.6));
-animation:hb 0.8s ease-in-out infinite alternate;
+.finale h2{font-size:clamp(2.4rem,6vw,4.3rem)}
+.love-line{
+  border-left:6px solid var(--red);
+  padding-left:18px;
+  margin:24px 0;
+  font-family:"DM Serif Display", serif;
+  font-size:1.55rem;
+  line-height:1.35;
+  color:var(--ink);
 }
-@keyframes hb{from{transform:scale(1);}to{transform:scale(1.12);}}
-.f-title{
-font-family:'Playfair Display',serif;
-font-style:italic;
-font-size:clamp(2.2rem,7vw,3.8rem);
-background:linear-gradient(135deg,var(--p),var(--pk),var(--b));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-background-clip:text;
-margin-bottom:24px;
+.restart{
+  margin-top:18px;
+  background:transparent;
+  border:1px solid rgba(36,32,28,.28);
+  padding:12px 14px;
+  cursor:pointer;
+  font-weight:800;
 }
-.f-msg{
-font-size:clamp(0.95rem,2.5vw,1.1rem);
-color:var(--sub);
-line-height:1.9;
-margin-bottom:12px;
-font-weight:300;
-}
-.f-msg strong{color:var(--pk);font-weight:700;}
-.divider{
-width:60px;height:1px;
-background:linear-gradient(90deg,transparent,var(--p),transparent);
-margin:28px auto;
-}
-.f-sig{
-font-family:'Playfair Display',serif;
-font-style:italic;
-font-size:1.6rem;
-color:var(--p);
-opacity:0.75;
-}
-.btn-r{
-display:inline-flex;
-align-items:center;
-gap:10px;
-margin-top:32px;
-background:linear-gradient(135deg,var(--p),var(--pk));
-border:none;
-border-radius:100px;
-padding:14px 36px;
-font-family:'Outfit',sans-serif;
-font-size:0.95rem;
-font-weight:700;
-color:#fff;
-cursor:pointer;
-transition:all 0.3s ease;
-box-shadow:0 0 30px rgba(192,132,252,0.35);
-letter-spacing:0.5px;
-}
-.btn-r:hover{
-transform:scale(1.05);
-box-shadow:0 0 50px rgba(244,114,182,0.5);
-}
-.float-layer{
-position:fixed;
-inset:0;
-z-index:1;
-pointer-events:none;
-overflow:hidden;
-}
-.fp{
-position:absolute;
-font-size:1.2rem;
-animation:fup linear infinite;
-will-change:transform;
-}
-@keyframes fup{
-0%{transform:translateY(0) scale(1);opacity:0.9;}
-100%{transform:translateY(-105vh) scale(0.4);opacity:0;}
-}
-footer{
-position:relative;
-z-index:10;
-text-align:center;
-margin-top:40px;
-font-size:0.7rem;
-letter-spacing:2px;
-color:rgba(226,217,243,0.18);
-text-transform:uppercase;
-}
-@media(max-width:480px){
-.card{border-radius:20px;}
-.ch{padding:14px 14px;}
+@media (max-width:860px){
+  .app{padding:14px}
+  .screen{grid-template-columns:1fr}
+  .hero,.panel{min-height:auto}
+  .hero{gap:70px;padding:24px}
+  .dash{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
+<main class="app">
+  <div class="track-art" aria-hidden="true"></div>
+  <section class="screen">
+    <div class="hero">
+      <div class="kicker">
+        <span>Private Grand Prix</span>
+        <span class="lights" aria-hidden="true"><i class="light"></i><i class="light"></i><i class="light"></i></span>
+      </div>
+      <h1>Race To <span class="script">My Heart</span></h1>
+      <div class="dash" aria-label="Love dashboard">
+        <div class="meter"><b>44</b><span>laps of missing you</span></div>
+        <div class="meter"><b>300</b><span>km/h heartbeat</span></div>
+        <div class="meter"><b>01</b><span>only girl on pole</span></div>
+      </div>
+    </div>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-<div class="stars" id="stars"></div>
-<div class="float-layer" id="fl"></div>
+    <div class="panel">
+      <div class="panel-head">
+        <span class="tag">Love Stereo</span>
+        <button class="sound" id="soundBtn" type="button" aria-label="Toggle music">♪</button>
+      </div>
 
-<div class="page">
+      <div id="lockView" class="view active">
+        <div class="eyebrow">Security check</div>
+        <h2>Unlock the paddock</h2>
+        <p>This little circuit opens only for the person who knows Ayan properly.</p>
+        <form class="lock-form" id="lockForm">
+          <label for="password">What is the nickname of Ayan?</label>
+          <input id="password" autocomplete="off" placeholder="Type the nickname">
+          <button class="primary" type="submit">Start the race</button>
+          <div class="error" id="lockError" role="status"></div>
+        </form>
+      </div>
 
-<div class="hero">
-<div class="badge">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>
-Only For You
-</div>
-<h1 class="hero-title">My Pookie Bear</h1>
-<p class="hero-sub">a tiny journey crafted with an enormous amount of love</p>
-</div>
+      <div id="quizView" class="view">
+        <div class="progress"><span id="lapText">Lap 1 / 6</span><div class="bar"><span id="barFill"></span></div></div>
+        <div class="eyebrow" id="category">Flower check</div>
+        <h2 id="question">Question</h2>
+        <p id="hint">Pick the answer that feels most like us.</p>
+        <div class="choices" id="choices"></div>
+        <div class="result-note" id="note" hidden></div>
+      </div>
 
-<div class="track"><div class="fill" id="fill"></div></div>
-
-<div class="card" id="qcard">
-
-<div class="step on" id="s1">
-<div class="step-label"><span>1</span>Step 01 / 05</div>
-<p class="q">Lights out and away we go — ready to unlock a <em>very special message</em> made just for you?</p>
-<div class="choices">
-<button class="ch" onclick="go(1,2)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-Let's go, I'm ready!
-</button>
-<button class="ch" onclick="go(1,2)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-Box, Box — Yes!
-</button>
-</div>
-</div>
-
-<div class="step" id="s2">
-<div class="step-label"><span>2</span>Step 02 / 05</div>
-<p class="q">If you were a flower in a <em>magical garden</em>, which one would you absolutely be?</p>
-<div class="choices">
-<button class="ch" onclick="go(2,3)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/></svg>
-A Lily — rare & breathtaking
-</button>
-<button class="ch" onclick="go(2,3)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-A Star — luminous & free
-</button>
-</div>
-</div>
-
-<div class="step" id="s3">
-<div class="step-label"><span>3</span>Step 03 / 05</div>
-<p class="q">How fast does my heart <em>race</em> the moment I see your name on my screen?</p>
-<div class="choices">
-<button class="ch" onclick="go(3,4)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-Faster than a pitstop — instantly
-</button>
-<button class="ch" onclick="go(3,4)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-Before time even registers
-</button>
-</div>
-</div>
-
-<div class="step" id="s4">
-<div class="step-label"><span>4</span>Step 04 / 05</div>
-<p class="q">Final boss question — who holds the title of the <em>most amazing</em> person in my entire universe?</p>
-<div class="choices">
-<button class="ch" onclick="go(4,5)">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-Hint — it's definitely ME 💅
-</button>
-</div>
-</div>
-
-<div class="step" id="s5">
-<div class="step-label"><span>5</span>Step 05 / 05</div>
-<p class="q">Last one — do you know just <em>how much</em> you are truly loved?</p>
-<div class="choices">
-<button class="ch" onclick="end()">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-More than infinity itself
-</button>
-<button class="ch" onclick="end()">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-As wide as the whole universe
-</button>
-</div>
-</div>
-
-</div>
-
-<div class="finale" id="finale">
-<div class="card">
-<svg class="f-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#c084fc"/>
-<stop offset="50%" stop-color="#f472b6"/>
-<stop offset="100%" stop-color="#38bdf8"/>
-</linearGradient>
-</defs>
-<path d="M50 85 C50 85 15 60 15 35 C15 22 25 12 38 12 C43 12 48 15 50 18 C52 15 57 12 62 12 C75 12 85 22 85 35 C85 60 50 85 50 85Z" fill="url(#hg)"/>
-</svg>
-<div class="f-title">You Won Everything</div>
-<p class="f-msg">No grand gesture, no drama — just me, wanting to say<br>the most honest thing I know:</p>
-<p class="f-msg"><strong>I love you more than F1, anime, and every star in every galaxy.</strong></p>
-<p class="f-msg">You are my pookie, my peace, my whole entire vibe. 🐻‍❄️<br>Thanks for existing and making every ordinary day feel like a dream.</p>
-<div class="divider"></div>
-<p class="f-msg">🏎️ You've won the <strong>Grand Prix of my heart.</strong><br>🪻 You're my favourite bloom in every season.<br>✨ You are the light I never knew I needed.</p>
-<div class="f-sig">— always & forever yours 💜</div>
-<button class="btn-r" onclick="restart()">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-Play Again
-</button>
-</div>
-</div>
-
-<footer>made with love &nbsp;·&nbsp; just for you</footer>
-</div>
+      <div id="finalView" class="view finale">
+        <div class="eyebrow">Finish line</div>
+        <h2>You won my whole race.</h2>
+        <p class="love-line">No trophy, car, flower, or perfect answer can beat the way you make ordinary days feel like a victory lap.</p>
+        <p>I love your soft heart, your confusing questions, your little moods, and the way you make me want to become better. You are my favorite place to arrive, my calm after every fast turn, and the person I want beside me for every lap ahead.</p>
+        <button class="restart" type="button" id="restart">Run it again</button>
+      </div>
+    </div>
+  </section>
+</main>
 
 <script>
-(function(){
-var s=document.getElementById('stars');
-for(var i=0;i<90;i++){
-var d=document.createElement('div');
-d.className='star';
-var sz=Math.random()*2+0.5;
-d.style.cssText='width:'+sz+'px;height:'+sz+'px;top:'+Math.random()*100+'%;left:'+Math.random()*100+'%;animation-duration:'+(2+Math.random()*4)+'s;animation-delay:'+Math.random()*4+'s;opacity:'+Math.random()*0.5;
-s.appendChild(d);
-}
-})();
+const questions = [
+  {
+    category: "Flower check",
+    question: "If I brought flowers after a race, which one is the most you?",
+    hint: "The answer is hiding in your soft, pretty flower taste.",
+    choices: ["Lilies, because they feel elegant and calm", "Sunflowers only", "A cactus with attitude"],
+    note: "Lilies it is. Gentle, graceful, and impossible to ignore."
+  },
+  {
+    category: "Garage choice",
+    question: "Pick our date-night car from the paddock.",
+    hint: "No wrong answer, but some choices sound expensive in a romantic way.",
+    choices: ["Mercedes Benz, smooth and classy", "BMW, sharp and dramatic", "A scooter with two helmets"],
+    note: "Mercedes Benz and BMW both pass. The passenger seat is reserved for you."
+  },
+  {
+    category: "Garden lap",
+    question: "What hobby makes a home feel softer?",
+    hint: "The one with soil, patience, and tiny green wins.",
+    choices: ["Gardening together", "Counting traffic cones", "Arguing with the weather"],
+    note: "Gardening together: flowers outside, peace inside."
+  },
+  {
+    category: "Boyfriend puzzle",
+    question: "When a girl asks, 'Do you notice anything different?' what should her boyfriend do?",
+    hint: "This is a championship-level question.",
+    choices: ["Look carefully, compliment honestly, and never panic", "Say 'same as yesterday'", "Change the topic to F1 tires"],
+    note: "Correct. Careful eyes, sweet words, full survival mode."
+  },
+  {
+    category: "Boyfriend puzzle",
+    question: "If she says 'I'm fine', what does that usually mean?",
+    hint: "The bravest drivers slow down for this corner.",
+    choices: ["Ask gently and stay close", "Celebrate freedom", "Open a spreadsheet"],
+    note: "Exactly. Stay soft, stay present, bring snacks if required."
+  },
+  {
+    category: "Final corner",
+    question: "What is the best plan for us?",
+    hint: "Choose the one with forever energy.",
+    choices: ["Love, loyalty, flowers, fast cars, and growing old together", "Only texting once a month", "Never sharing fries"],
+    note: "That is the finish line I want too."
+  }
+];
 
-var step=1,total=5;
-var parts=['💙','💜','🩷','✨','🌸','🫧','💫','⭐'];
-var fl=document.getElementById('fl');
+const lockView = document.getElementById("lockView");
+const quizView = document.getElementById("quizView");
+const finalView = document.getElementById("finalView");
+const lockForm = document.getElementById("lockForm");
+const password = document.getElementById("password");
+const lockError = document.getElementById("lockError");
+const category = document.getElementById("category");
+const question = document.getElementById("question");
+const hint = document.getElementById("hint");
+const choices = document.getElementById("choices");
+const note = document.getElementById("note");
+const lapText = document.getElementById("lapText");
+const barFill = document.getElementById("barFill");
+const restart = document.getElementById("restart");
+const soundBtn = document.getElementById("soundBtn");
+let index = 0;
+let audioCtx;
+let musicTimer;
+let musicOn = false;
 
-function spawn(){
-var p=document.createElement('div');
-p.className='fp';
-p.textContent=parts[Math.floor(Math.random()*parts.length)];
-p.style.left=Math.random()*100+'vw';
-p.style.bottom='-30px';
-var d=6+Math.random()*7;
-p.style.animationDuration=d+'s';
-p.style.animationDelay=Math.random()*1+'s';
-p.style.fontSize=(0.8+Math.random()*1.2)+'rem';
-fl.appendChild(p);
-setTimeout(function(){p.remove();},(d+2)*1000);
-}
-setInterval(spawn,700);
-
-function setFill(n){
-document.getElementById('fill').style.width=(n/total*100)+'%';
-}
-
-function go(a,b){
-document.getElementById('s'+a).classList.remove('on');
-setTimeout(function(){
-step=b;
-document.getElementById('s'+b).classList.add('on');
-setFill(b);
-},80);
+function show(view){
+  [lockView, quizView, finalView].forEach(el => el.classList.remove("active"));
+  view.classList.add("active");
 }
 
-function end(){
-document.getElementById('qcard').style.display='none';
-document.getElementById('finale').classList.add('on');
-document.getElementById('fill').style.width='100%';
-for(var i=0;i<16;i++)setTimeout(spawn,i*100);
+function normalizeAnswer(value){
+  return value.trim().toLowerCase().replace(/\.+$/,"");
 }
 
-function restart(){
-step=1;
-document.querySelectorAll('.step').forEach(function(s){s.classList.remove('on');});
-document.getElementById('s1').classList.add('on');
-setFill(1);
-document.getElementById('qcard').style.display='block';
-document.getElementById('finale').classList.remove('on');
+function renderQuestion(){
+  const item = questions[index];
+  category.textContent = item.category;
+  question.textContent = item.question;
+  hint.textContent = item.hint;
+  lapText.textContent = `Lap ${index + 1} / ${questions.length}`;
+  barFill.style.width = `${(index / questions.length) * 100}%`;
+  note.hidden = true;
+  choices.innerHTML = "";
+  item.choices.forEach(text => {
+    const button = document.createElement("button");
+    button.className = "choice";
+    button.type = "button";
+    button.textContent = text;
+    button.addEventListener("click", () => selectChoice(button, item.note));
+    choices.appendChild(button);
+  });
 }
+
+function selectChoice(button, message){
+  document.querySelectorAll(".choice").forEach(el => el.classList.remove("selected"));
+  button.classList.add("selected");
+  note.textContent = message;
+  note.hidden = false;
+  setTimeout(() => {
+    index += 1;
+    if(index >= questions.length){
+      barFill.style.width = "100%";
+      show(finalView);
+      return;
+    }
+    renderQuestion();
+  }, 1050);
+}
+
+function playTone(freq, start, duration, gainValue){
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(gainValue, start + 0.04);
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+  osc.connect(gain).connect(audioCtx.destination);
+  osc.start(start);
+  osc.stop(start + duration + 0.03);
+}
+
+function startMusic(){
+  if(musicOn) return;
+  audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+  musicOn = true;
+  soundBtn.classList.add("on");
+  const notes = [261.63, 329.63, 392, 523.25, 392, 329.63];
+  let step = 0;
+  const loop = () => {
+    if(!musicOn) return;
+    const now = audioCtx.currentTime;
+    playTone(notes[step % notes.length], now, .62, .045);
+    playTone(notes[(step + 2) % notes.length] / 2, now + .08, .72, .025);
+    step += 1;
+  };
+  loop();
+  musicTimer = setInterval(loop, 720);
+}
+
+function stopMusic(){
+  musicOn = false;
+  clearInterval(musicTimer);
+  soundBtn.classList.remove("on");
+}
+
+lockForm.addEventListener("submit", event => {
+  event.preventDefault();
+  if(normalizeAnswer(password.value) !== "adi"){
+    lockError.textContent = "Pit wall says no. Try the nickname again.";
+    return;
+  }
+  lockError.textContent = "";
+  startMusic();
+  index = 0;
+  renderQuestion();
+  show(quizView);
+});
+
+soundBtn.addEventListener("click", () => {
+  if(musicOn) stopMusic();
+  else startMusic();
+});
+
+restart.addEventListener("click", () => {
+  index = 0;
+  renderQuestion();
+  show(quizView);
+});
 </script>
 </body>
 </html>
